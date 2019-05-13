@@ -1,16 +1,22 @@
+<!-- The app-movie-details component displays the movie after it's been selected -->
+<app-movie-details
+    [class]="selectedMovie ? 'active' : ''"
+    (close)="handleClose()"
+    [movie]="selectedMovie">
+</app-movie-details>
+
 <!--
     This block displays the list of movies to choose from.  Don't let some of the
     Angular syntax here overwhelm you - we'll go over that in another training.
-
     But, a quick explanation of what's going on here:
-
     1.  The *ngIf on the first <div> ensures that the <div> is
         only displayed after search results have been found.
     2.  The *ngFor on the second <div> is a for loop.  The <div> element
         is created over and over for each movie in the list.
 -->
-<div *ngIf="searchResults$ | async as searchResults"
-    class="flex-row">
+<div
+    *ngIf="searchResults$ | async; let searchResults"
+    [class]="'movie-container flex-row' + (selectedMovie ? '' : ' active')">
     <div
         *ngFor="let movie of searchResults.results; let i = index;"
         (click)="handleClick(movie)"
