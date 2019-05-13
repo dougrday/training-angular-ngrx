@@ -9,10 +9,10 @@
     2.  The *ngFor on the second <div> is a for loop.  The <div> element
         is created over and over for each movie in the list.
 -->
-<div
+<div *ngIf="searchResults$ | async as searchResults"
     class="flex-row">
     <div
-        *ngFor="let movie of searchResults$ | async; let i = index;"
+        *ngFor="let movie of searchResults.results; let i = index;"
         (click)="handleClick(movie)"
         class="movie flex-col"
         tabindex="{{i + 1}}"

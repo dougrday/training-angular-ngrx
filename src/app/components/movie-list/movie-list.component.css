@@ -1,5 +1,5 @@
 .movie {
-    border: 2px solid transparent;
+    border: 4px solid transparent;
     cursor: pointer;
     padding: 1em;
     user-select: none;
