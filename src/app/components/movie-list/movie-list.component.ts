@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { MovieActions } from "../../actions/movie.actions";
+import { SearchAction, SelectAction } from "../../actions/movie.actions";
 import { SearchResult } from "../../models/themoviedb";
 import { AppState } from "../../reducers";
-import { getSearchResultList, getSelectedMovie } from "../../selectors/movie.selectors";
+import { getSearchResultList } from "../../selectors/movie.selectors";
 
 @Component({
     selector: "app-movie-list",
@@ -24,12 +24,12 @@ export class MovieListComponent implements OnInit {
     }
 
     handleClick(movie: SearchResult) {
-        this.store.dispatch(MovieActions.select(movie));
+        this.store.dispatch(new SelectAction(movie));
     }
 
     ngOnInit() {
         // NOTE: instead of calling the API directly here, we now dispatch
         // an action to perform the search.
-        this.store.dispatch(MovieActions.search.begin({ page: "1" }));
+        this.store.dispatch(new SearchAction({ page: "1" }));
     }
 }

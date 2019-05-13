@@ -1,5 +1,4 @@
-import { PayloadAction } from "../actions/defs";
-import { MovieActionTypes } from "../actions/movie.actions";
+import { MovieActionTypes, MovieActions } from "../actions/movie.actions";
 import { SearchResults, SearchResult } from "../models/themoviedb";
 
 /**
@@ -29,24 +28,26 @@ const defaultState: MovieState = {
  * The reducer, responsible for updating the state of this area of the application
  * when specific actions are observed in the store.
  */
-export function movieReducer(state = defaultState, action: PayloadAction<SearchResult | SearchResults>) {
+export function movieReducer(state = defaultState, action: MovieActions) {
     switch (action.type) {
         // When the search results are successfully retrieved from the API,
         // store those results in the Redux store.
-        case MovieActionTypes.Search.SUCCESS: {
+        case MovieActionTypes.SearchSuccess: {
             // Create an immutable copy of state.  This is one of the main rules
             // of a reducer -- it MUST return immutable state.
             // This makes the reducer a `pure` function -- we don't modify
             // state directly, but clone it first, and then modify the clone.
-            return Object.assign({}, state, {
-                searchResults: action.payload
-            } as MovieState);
+            return {
+                ...state,
+                searchResults: action.payload,
+            };
         }
 
         case MovieActionTypes.Select: {
-            return Object.assign({}, state, {
-                selectedMovie: action.payload
-            });
+            return {
+                ...state,
+                selectedMovie: action.payload,
+            };
         }
 
         // No changes to state need to be made, return the current state.

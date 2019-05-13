@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { MovieActions } from "../actions/movie.actions";
+import { MovieActions, SelectAction } from "../actions/movie.actions";
 import { SearchResult } from "../models/themoviedb";
 import { AppState } from "../reducers";
 import { getSelectedMovie } from "../selectors/movie.selectors";
@@ -21,6 +21,6 @@ export class AppComponent {
     }
 
     handleClose() {
-        this.store.dispatch(MovieActions.select(null));
+        this.store.dispatch(new SelectAction(null));
     }
 }

@@ -1,25 +1,39 @@
 import { NowPlayingSearchOptions, SearchResult, SearchResults } from "../models/themoviedb";
-import { Action, AsyncAction, createAction, createAsyncActions } from "./defs";
+import { Action } from "@ngrx/store";
 
-/**
- * A list of string constants for each type of action that can be dispatched.
- */
-export const MovieActionTypes = {
-    Search: AsyncAction("movie/search"),
-    Select: Action("movie/select"),
-};
+interface ActionWithPayload<TPayload> extends Action {
+    payload: TPayload;
+}
 
-/**
- * A collection of action creators for 'movie' actions.
- */
-export const MovieActions = {
-    /**
-     * Searches for movies.
-     */
-    search: createAsyncActions<NowPlayingSearchOptions, SearchResults>(MovieActionTypes.Search),
+export enum MovieActionTypes {
+    Search = '@demo/movie/search/begin',
+    SearchFailure = '@demo/movie/search/failure',
+    SearchSuccess = '@demo/movie/search/success',
+    Select = '@demo/movie/select',
+}
 
-    /**
-     * Selects a movie.
-     */
-    select: createAction<SearchResult>(MovieActionTypes.Select),
-};
+export class SearchAction implements ActionWithPayload<NowPlayingSearchOptions> {
+    readonly type = MovieActionTypes.Search;
+    constructor(public payload: NowPlayingSearchOptions) { };
+}
+
+export class SearchFailureAction implements ActionWithPayload<any> {
+    readonly type = MovieActionTypes.SearchFailure;
+    constructor(public payload: any) { };
+}
+
+export class SearchSuccessAction implements ActionWithPayload<SearchResults> {
+    readonly type = MovieActionTypes.SearchSuccess;
+    constructor(public payload: SearchResults) { };
+}
+
+export class SelectAction implements ActionWithPayload<SearchResult> {
+    readonly type = MovieActionTypes.Select;
+    constructor(public payload: SearchResult) { };
+}
+
+export type MovieActions =
+    SearchAction
+    | SearchFailureAction
+    | SearchSuccessAction
+    | SelectAction;

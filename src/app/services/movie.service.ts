@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { MovieActions } from "../actions/movie.actions";
+import { map } from "rxjs/operators";
 import { NowPlayingSearchOptions, SearchResults } from "../models/themoviedb";
 import { AppState } from "../reducers";
 
@@ -14,7 +14,7 @@ const baseUrl = "https://api.themoviedb.org/3";
 export class MovieService {
     constructor(
         private http: HttpClient,
-        private store: Store<AppState>,
+        private store$: Store<AppState>,
     ) { }
 
     private url(url) {
@@ -34,6 +34,12 @@ export class MovieService {
             request
         );
 
-        return this.http.get<SearchResults>(this.url("movie/now_playing"), { params: request });
+        return this.http
+            .get<SearchResults>(this.url("movie/now_playing"), { params: request })
+            .pipe(map(response => ({
+                ...response,
+                // Filter out romantic & horror movies (remove risque' covers for demo's sake!)
+                results: response.results.filter(result => result.genre_ids.indexOf(10749) === -1 && result.genre_ids.indexOf(27))
+            })));
     }
 }
