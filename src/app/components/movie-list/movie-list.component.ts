@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { select, Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { MovieService } from "src/app/services/movie.service";
+import { SearchMovies } from "src/app/movie.actions";
 import { SearchResult, SearchResults } from "../../models/themoviedb";
 
 @Component({
@@ -13,8 +14,10 @@ export class MovieListComponent implements OnInit {
     selectedMovie: SearchResult;
 
     constructor(
-        private movieService: MovieService,
-    ) {}
+        private store$: Store<any>,
+    ) {
+        this.searchResults$ = this.store$.pipe(select(state => state.movie.searchResults));
+    }
 
     handleClick(movie: SearchResult) {
         this.selectedMovie = movie;
@@ -25,6 +28,7 @@ export class MovieListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.searchResults$ = this.movieService.getNowPlaying({ page: '1' });
+        // When the component is initialized, begin searching for movies
+        this.store$.dispatch(new SearchMovies());
     }
 }

@@ -9,7 +9,6 @@ export enum MovieActionTypes {
 
 export class SearchMovies implements Action {
     readonly type = MovieActionTypes.SearchMovies;
-    constructor(public payload: NowPlayingSearchOptions) {}
 }
 
 export class SearchMoviesFailure implements Action {

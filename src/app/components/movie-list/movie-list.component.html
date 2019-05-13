@@ -25,7 +25,7 @@
         title="{{movie.title}}">
         <!-- If there's a poster image, display it -->
         <div *ngIf="movie.poster_path" class="poster">
-            <img src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" />
+            <img src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" />
         </div>
     </div>
 </div>

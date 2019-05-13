@@ -13,27 +13,3 @@ header {
     width: 100vw;
     z-index: 1;
 }
-
-app-movie-details {
-    position: fixed;
-    left: 0;
-    top: 64px;
-    transform: translateX(100vw);
-    transition: transform ease-in-out 0.5s;
-}
-app-movie-details.active {
-    transform: translateX(0);
-}
-
-app-movie-list {
-    display: block;
-    margin: 0 auto;
-    opacity: 0;
-    padding-top: 85px;
-    transform: translateX(-100vw);
-    transition: opacity ease-in-out 0.25s, transform ease-in-out 0.5s;
-}
-app-movie-list.active {
-    opacity: 1;
-    transform: translateX(0);
-}
