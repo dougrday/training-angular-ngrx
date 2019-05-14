@@ -4,7 +4,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./components/app.component";
 import { MovieDetailsComponent } from "./components/movie-details/movie-details.component";
 import { MovieListComponent } from "./components/movie-list/movie-list.component";
-import { AuthService } from "./services/auth.service";
 import { MovieService } from "./services/movie.service";
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
@@ -31,7 +30,6 @@ import { MovieEffects } from './movie.effects';
         EffectsModule.forFeature([MovieEffects]),
     ],
     providers: [
-        AuthService,
         MovieService,
     ],
     bootstrap: [AppComponent]
