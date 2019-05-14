@@ -12,7 +12,6 @@ import { MovieListComponent } from "./components/movie-list/movie-list.component
 import { MovieEffects } from './movie.effects';
 import { movieReducer } from "./movie.reducer";
 import { metaReducers, reducers } from './reducers';
-import { AuthService } from "./services/auth.service";
 import { MovieService } from "./services/movie.service";
 
 @NgModule({
@@ -31,7 +30,6 @@ import { MovieService } from "./services/movie.service";
         EffectsModule.forFeature([MovieEffects]),
     ],
     providers: [
-        AuthService,
         MovieService,
     ],
     bootstrap: [AppComponent]
