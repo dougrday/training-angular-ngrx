@@ -4,7 +4,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./components/app.component";
 import { MovieDetailsComponent } from "./components/movie-details/movie-details.component";
 import { MovieListComponent } from "./components/movie-list/movie-list.component";
-import { AuthService } from "./services/auth.service";
 import { MovieService } from "./services/movie.service";
 
 @NgModule({
@@ -18,7 +17,6 @@ import { MovieService } from "./services/movie.service";
         HttpClientModule,
     ],
     providers: [
-        AuthService,
         MovieService,
     ],
     bootstrap: [AppComponent]
