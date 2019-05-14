@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { SearchResult } from "src/app/models/themoviedb";
+import { SearchResult } from "../../models/themoviedb";
 
 @Component({
     selector: "app-movie-details",
