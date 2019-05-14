@@ -1,9 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Store } from "@ngrx/store";
 import { map } from "rxjs/operators";
 import { NowPlayingSearchOptions, SearchResults } from "../models/themoviedb";
-import { AppState } from "../reducers";
 
 const api_key = "431a59ce91710d2d84564d46c0e65729";
 const baseUrl = "https://api.themoviedb.org/3";
@@ -14,7 +12,6 @@ const baseUrl = "https://api.themoviedb.org/3";
 export class MovieService {
     constructor(
         private http: HttpClient,
-        private store$: Store<AppState>,
     ) { }
 
     private url(url) {

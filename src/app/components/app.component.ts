@@ -1,10 +1,9 @@
 import { Component } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { MovieActions, SelectAction } from "../actions/movie.actions";
 import { SearchResult } from "../models/themoviedb";
-import { AppState } from "../reducers";
-import { getSelectedMovie } from "../selectors/movie.selectors";
+import { getSelectedMovie } from "../movie.selectors";
+import { SelectMovie } from "../movie.actions";
 
 @Component({
     selector: "app-root",
@@ -15,12 +14,12 @@ export class AppComponent {
     selectedMovie$: Observable<SearchResult>;
 
     constructor(
-        private store: Store<AppState>,
+        private store: Store<any>,
     ) {
         this.selectedMovie$ = this.store.select(getSelectedMovie);
     }
 
     handleClose() {
-        this.store.dispatch(new SelectAction(null));
+        this.store.dispatch(new SelectMovie(null));
     }
 }

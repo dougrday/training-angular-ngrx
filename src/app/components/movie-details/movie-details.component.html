@@ -10,8 +10,8 @@
     </div>
 </div>
 <div class="flex-row" style="justify-content: flex-start">
-    <div class="poster flex-col">
-        <img src="https://image.tmdb.org/t/p/w500/{{movie?.poster_path}}" />
+    <div *ngIf="movie?.poster_path" class="poster flex-col">
+        <img src="https://image.tmdb.org/t/p/w500{{movie?.poster_path}}" />
     </div>
     <div class="details flex-col">
         <div class="overview">

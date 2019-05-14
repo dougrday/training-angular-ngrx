@@ -1,5 +1,5 @@
-import { MovieActionTypes, MovieActions } from "../actions/movie.actions";
-import { SearchResults, SearchResult } from "../models/themoviedb";
+import { SearchResult, SearchResults } from "./models/themoviedb";
+import { MovieActions, MovieActionTypes } from "./movie.actions";
 
 /**
  * Define the `movie` area of state.
@@ -32,7 +32,7 @@ export function movieReducer(state = defaultState, action: MovieActions) {
     switch (action.type) {
         // When the search results are successfully retrieved from the API,
         // store those results in the Redux store.
-        case MovieActionTypes.SearchSuccess: {
+        case MovieActionTypes.SearchMoviesSuccess: {
             // Create an immutable copy of state.  This is one of the main rules
             // of a reducer -- it MUST return immutable state.
             // This makes the reducer a `pure` function -- we don't modify

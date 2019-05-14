@@ -1,20 +1,19 @@
-import { movieReducer, MovieState } from "./movie.reducer";
+import {
+  ActionReducer,
+  ActionReducerMap,
+  createFeatureSelector,
+  createSelector,
+  MetaReducer
+} from '@ngrx/store';
+import { environment } from '../../environments/environment';
 
-/**
- * The shape of the state for the application.
- */
-export interface AppState {
-    /**
-     * Movie-related state.
-     */
-    movie: MovieState;
+export interface State {
+
 }
 
-/**
- * A list of reducers in the application.
- * Note that this follows the "shape" of the applicaiton state
- * defined in `AppState`.
- */
-export const reducers = {
-    movie: movieReducer,
+export const reducers: ActionReducerMap<State> = {
+
 };
+
+
+export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

@@ -1,15 +1,19 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { EffectsModule } from "@ngrx/effects";
-import { StoreModule } from "@ngrx/store";
-import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { AppEffects } from './app.effects';
 import { AppComponent } from "./components/app.component";
 import { MovieDetailsComponent } from "./components/movie-details/movie-details.component";
 import { MovieListComponent } from "./components/movie-list/movie-list.component";
-import { reducers } from "./reducers";
+import { MovieEffects } from './movie.effects';
+import { movieReducer } from "./movie.reducer";
+import { metaReducers, reducers } from './reducers';
+import { AuthService } from "./services/auth.service";
 import { MovieService } from "./services/movie.service";
-import { MovieEffects } from "./effects/movie.effects";
 
 @NgModule({
     declarations: [
@@ -19,15 +23,15 @@ import { MovieEffects } from "./effects/movie.effects";
     ],
     imports: [
         BrowserModule,
-        EffectsModule.forRoot([
-            MovieEffects,
-        ]),
         HttpClientModule,
-        StoreModule.forRoot(reducers),
-        // Instrumentation must be imported after importing StoreModule (config is optional)
-        StoreDevtoolsModule.instrument(),
+        StoreModule.forRoot(reducers, { metaReducers }),
+        EffectsModule.forRoot([AppEffects]),
+        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+        StoreModule.forFeature('movie', movieReducer),
+        EffectsModule.forFeature([MovieEffects]),
     ],
     providers: [
+        AuthService,
         MovieService,
     ],
     bootstrap: [AppComponent]

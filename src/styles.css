@@ -9,7 +9,7 @@ html, body {
 }
 
 *:focus {
-    border: 2px dashed #0055cc !important;
+    border: 4px dashed #0099ff !important;
     outline: 0;
 }
 

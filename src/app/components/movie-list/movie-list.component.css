@@ -1,14 +1,5 @@
-.movie-container {
-    margin: 0 auto;
-    transform: translateX(-100vw);
-    transition: transform 1s;
-}
-:host.active .movie-container {
-    transform: translateX(0);
-}
-
 .movie {
-    border: 2px solid transparent;
+    border: 4px solid transparent;
     cursor: pointer;
     padding: 1em;
     user-select: none;
@@ -35,4 +26,3 @@
 .poster img {
     box-shadow: 10px 10px 30px #111111;
 }
-

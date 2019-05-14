@@ -1,8 +1,7 @@
-import { AppState } from "../reducers";
-import { SearchResult } from "../models/themoviedb";
+import { SearchResult } from "./models/themoviedb";
 import { createSelector } from "@ngrx/store";
 
-const getMovieState = (state: AppState) => state.movie;
+const getMovieState = (state: any) => state.movie;
 
 /**
  * Gets a list of movies from the search results.

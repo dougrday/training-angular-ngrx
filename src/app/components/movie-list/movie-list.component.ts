@@ -1,10 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Store } from "@ngrx/store";
+import { select, Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { SearchAction, SelectAction } from "../../actions/movie.actions";
-import { SearchResult } from "../../models/themoviedb";
-import { AppState } from "../../reducers";
-import { getSearchResultList } from "../../selectors/movie.selectors";
+import { SearchResult, SearchResults } from "../../models/themoviedb";
+import { getSearchResultList, getSelectedMovie } from "src/app/movie.selectors";
+import { SelectMovie, SearchMovies } from "src/app/movie.actions";
 
 @Component({
     selector: "app-movie-list",
@@ -13,23 +12,22 @@ import { getSearchResultList } from "../../selectors/movie.selectors";
 })
 export class MovieListComponent implements OnInit {
     searchResults$: Observable<SearchResult[]>;
+    selectedMovie$: Observable<SearchResult>;
 
     constructor(
-        private store: Store<AppState>,
+        private store$: Store<any>,
     ) {
-        // Get the search results from the store -- this means our component
-        // is no longer the "source of truth" for the list of movies returned.
-        // The store can provide that list of movies to other components, if they need it.
-        this.searchResults$ = this.store.select(getSearchResultList);
+        this.searchResults$ = this.store$.pipe(select(getSearchResultList));
+        this.selectedMovie$ = this.store$.pipe(select(getSelectedMovie));
     }
 
     handleClick(movie: SearchResult) {
-        this.store.dispatch(new SelectAction(movie));
+        this.store$.dispatch(new SelectMovie(movie));
     }
 
     ngOnInit() {
         // NOTE: instead of calling the API directly here, we now dispatch
         // an action to perform the search.
-        this.store.dispatch(new SearchAction({ page: "1" }));
+        this.store$.dispatch(new SearchMovies());
     }
 }

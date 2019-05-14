@@ -1,9 +1,7 @@
 <!--
     This block displays the list of movies to choose from.  Don't let some of the
     Angular syntax here overwhelm you - we'll go over that in another training.
-
     But, a quick explanation of what's going on here:
-
     1.  The *ngIf on the first <div> ensures that the <div> is
         only displayed after search results have been found.
     2.  The *ngFor on the second <div> is a for loop.  The <div> element
@@ -19,7 +17,7 @@
         title="{{movie.title}}">
         <!-- If there's a poster image, display it -->
         <div *ngIf="movie.poster_path" class="poster">
-            <img src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" />
+            <img src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" />
         </div>
     </div>
 </div>
