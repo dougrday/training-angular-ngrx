@@ -15,10 +15,9 @@
         is created over and over for each movie in the list.
 -->
 <div
-    *ngIf="searchResults$ | async; let searchResults"
     [class]="'movie-container flex-row' + (selectedMovie ? '' : ' active')">
     <div
-        *ngFor="let movie of searchResults.results; let i = index;"
+        *ngFor="let movie of searchResults$ | async; let i = index;"
         (click)="handleClick(movie)"
         class="movie flex-col"
         tabindex="{{i + 1}}"
