@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { SearchResult } from "../../models/themoviedb";
+import { get5StarRating } from "src/app/movie.selectors";
 
 @Component({
     selector: "app-movie-details",
@@ -13,10 +14,7 @@ export class MovieDetailsComponent {
     constructor() { }
 
     get5StarRating() {
-        if (this.movie) {
-            return this.movie.vote_average / 2;
-        }
-        return 0;
+        return get5StarRating(this.movie);
     }
 
     /**
