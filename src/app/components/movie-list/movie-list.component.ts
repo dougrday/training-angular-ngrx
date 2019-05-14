@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { select, Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { SearchResult, SearchResults } from "../../models/themoviedb";
-import { getSearchResultList, getSelectedMovie } from "src/app/movie.selectors";
-import { SelectMovie, SearchMovies } from "src/app/movie.actions";
+import { SearchResult } from "../../models/themoviedb";
+import { SearchMovies, SelectMovie } from "../../movie.actions";
+import { getSearchResultList, getSelectedMovie } from "../../movie.selectors";
 
 @Component({
     selector: "app-movie-list",
