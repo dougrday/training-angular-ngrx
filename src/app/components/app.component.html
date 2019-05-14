@@ -2,7 +2,7 @@
 <app-movie-details
     [class]="(selectedMovie$ | async) ? 'active' : ''"
     (close)="handleClose()"
-    [movie]="(selectedMovie$ | async)">
+    [movie]="(selectedMovieDetails$ | async)">
 </app-movie-details>
 
 <app-movie-list
