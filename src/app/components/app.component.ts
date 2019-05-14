@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, HostListener } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { SearchResult } from "../models/themoviedb";
@@ -19,7 +19,16 @@ export class AppComponent {
         this.selectedMovie$ = this.store.select(getSelectedMovie);
     }
 
-    handleClose() {
+    deselect() {
         this.store.dispatch(new SelectMovie(null));
+    }
+
+    handleClose() {
+        this.deselect();
+    }
+
+    @HostListener("keydown.escape")
+    handleEscape($event: KeyboardEvent) {
+        this.deselect();
     }
 }
