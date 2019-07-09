@@ -19,7 +19,7 @@ Note that you must have *Python* installed to run the `run.cmd` command.
 
 ---------------
 
-## Part 1 - 10 minutes
+## Part 1 - 20 minutes
 
 - Clone this project, starting at the `part1` branch:
 `git clone --branch part1 https://github.com/landmarkhw/training-redux-arch.git`
@@ -81,7 +81,7 @@ We want to display the movie rating as a 5-star rating, whereas the data is base
 
 ---------------
 
-## Part 2 - 20 minutes
+## Part 2 - 1 hour
 
 ### Task 1: Let's add NgRx!
 From a command line, navigate to the project folder and run these commands from [the official docs](https://ngrx.io/docs):
@@ -167,3 +167,6 @@ In `ngOnInit()`, dispatch a `SearchMovies` action like this:
 
 `this.store$.dispatch(new SearchMovies());`
 
+## Part 3 - 1 hour
+
+### Task 1: Create a search bar
