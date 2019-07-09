@@ -35,8 +35,11 @@ export class MovieService {
             .get<SearchResults>(this.url("movie/now_playing"), { params: request })
             .pipe(map(response => ({
                 ...response,
-                // Filter out romantic & horror movies (remove risque' covers for demo's sake!)
-                results: response.results.filter(result => result.genre_ids.indexOf(10749) === -1 && result.genre_ids.indexOf(27))
+                // Filter out drama, romantic & horror movies (to remove risque' covers for demo's sake!)
+                results: response.results.filter(result =>
+                    result.genre_ids.indexOf(10749) === -1 &&
+                    result.genre_ids.indexOf(27) === -1 &&
+                    result.genre_ids.indexOf(18) === -1)
             })));
     }
 }
