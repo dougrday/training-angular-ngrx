@@ -1,4 +1,4 @@
-import { SearchResult, SearchResults } from "./models/themoviedb";
+import { SearchResult, SearchResults } from "../models/themoviedb";
 import { MovieActions, MovieActionTypes } from "./movie.actions";
 
 /**

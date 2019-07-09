@@ -3,8 +3,8 @@ import { select, Store } from "@ngrx/store";
 import { Observable, of, timer } from "rxjs";
 import { mapTo, switchMap } from "rxjs/operators";
 import { SearchResult } from "../models/themoviedb";
-import { SelectMovie } from "../movie.actions";
-import { getSelectedMovie } from "../movie.selectors";
+import { SelectMovie } from "../store/movie.actions";
+import { getSelectedMovie } from "../store/movie.selectors";
 
 @Component({
     selector: "app-root",

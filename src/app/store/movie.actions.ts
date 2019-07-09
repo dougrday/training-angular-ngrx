@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { SearchResult, SearchResults } from './models/themoviedb';
+import { SearchResult, SearchResults } from '../models/themoviedb';
 
 export enum MovieActionTypes {
     SearchMovies = '@demo/movies/search',

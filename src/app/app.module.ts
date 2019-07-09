@@ -9,8 +9,8 @@ import { AppEffects } from './app.effects';
 import { AppComponent } from "./components/app.component";
 import { MovieDetailsComponent } from "./components/movie-details/movie-details.component";
 import { MovieListComponent } from "./components/movie-list/movie-list.component";
-import { MovieEffects } from './movie.effects';
-import { movieReducer } from "./movie.reducer";
+import { MovieEffects } from './store/movie.effects';
+import { movieReducer } from "./store/movie.reducer";
 import { metaReducers, reducers } from './reducers';
 import { MovieService } from "./services/movie.service";
 
