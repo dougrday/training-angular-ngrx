@@ -28,6 +28,6 @@ export class MovieListComponent implements OnInit {
     ngOnInit() {
         // NOTE: instead of calling the API directly here, we now dispatch
         // an action to perform the search.
-        this.store$.dispatch(new SearchMovies());
+        this.store$.dispatch(new SearchMovies(null));
     }
 }

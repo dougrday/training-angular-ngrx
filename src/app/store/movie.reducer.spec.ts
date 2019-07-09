@@ -1,13 +1,13 @@
-import { reducer, initialState } from './movie.reducer';
+import { initialState, movieReducer } from "./movie.reducer";
 
-describe('Movie Reducer', () => {
-  describe('an unknown action', () => {
-    it('should return the previous state', () => {
-      const action = {} as any;
+describe("Movie Reducer", () => {
+    describe("an unknown action", () => {
+        it("should return the previous state", () => {
+            const action = {} as any;
 
-      const result = reducer(initialState, action);
+            const result = movieReducer(initialState, action);
 
-      expect(result).toBe(initialState);
+            expect(result).toBe(initialState);
+        });
     });
-  });
 });

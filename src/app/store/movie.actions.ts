@@ -1,15 +1,16 @@
-import { Action } from '@ngrx/store';
-import { SearchResult, SearchResults } from '../models/themoviedb';
+import { Action } from "@ngrx/store";
+import { SearchResult, SearchResults } from "../models/themoviedb";
 
 export enum MovieActionTypes {
-    SearchMovies = '@demo/movies/search',
-    SearchMoviesFailure = '@demo/movies/search/failure',
-    SearchMoviesSuccess = '@demo/movies/search/success',
-    Select = '@demo/movies/select',
+    SearchMovies = "@demo/movies/search",
+    SearchMoviesFailure = "@demo/movies/search/failure",
+    SearchMoviesSuccess = "@demo/movies/search/success",
+    Select = "@demo/movies/select",
 }
 
 export class SearchMovies implements Action {
     readonly type = MovieActionTypes.SearchMovies;
+    constructor(public payload: string) {}
 }
 
 export class SearchMoviesFailure implements Action {

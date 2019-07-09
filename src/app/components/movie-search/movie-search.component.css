@@ -1,0 +1,48 @@
+.container {
+    background-color: rgba(32, 32, 32, 0.9);
+    display: none;
+    height: 100vh;
+    left: 0px;
+    padding-left: 20vw;
+    position: fixed;
+    top: 0px;
+    width: 100vw;
+    z-index: 1;
+}
+
+.container.active {
+    display: block;
+}
+
+:host * {
+    color: white;
+}
+
+input {
+    background: transparent;
+    border: none;
+    font-size: 72px;
+}
+input:focus {
+    border: none !important;
+    outline: none !important;
+}
+
+.close {
+    cursor: pointer;
+    fill: rgba(255, 255, 255, 0.5);
+    position: fixed;
+    top: 16px;
+    right: 20vw;
+    width: 48px;
+    height: 48px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding-left: 16px;
+    }
+    .close {
+        right: 16px;
+    }
+}

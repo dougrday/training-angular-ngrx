@@ -16,6 +16,7 @@ app-movie-details {
     transform: translateX(100vw);
     transition: transform 1s;
 }
+
 app-movie-details.active {
     transform: translateX(0);
 }
@@ -26,6 +27,17 @@ app-movie-list {
     transform: translateX(-100vw);
     transition: transform 1s;
 }
+
 app-movie-list.active {
     transform: translateX(0);
+}
+
+.search {
+    cursor: pointer;
+    fill: rgba(255, 255, 255, 0.5);
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
 }

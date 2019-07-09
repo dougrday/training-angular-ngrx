@@ -19,7 +19,7 @@ export interface MovieState {
 /**
  * The default state.
  */
-const defaultState: MovieState = {
+export const initialState: MovieState = {
     selectedMovie: null,
     searchResults: null,
 };
@@ -28,7 +28,7 @@ const defaultState: MovieState = {
  * The reducer, responsible for updating the state of this area of the application
  * when specific actions are observed in the store.
  */
-export function movieReducer(state = defaultState, action: MovieActions) {
+export function movieReducer(state = initialState, action: MovieActions) {
     switch (action.type) {
         // When the search results are successfully retrieved from the API,
         // store those results in the Redux store.

@@ -1,5 +1,5 @@
-import { SearchResult } from "../models/themoviedb";
 import { createSelector } from "@ngrx/store";
+import { SearchResult } from "../models/themoviedb";
 
 const getMovieState = (state: any) => state.movie;
 
