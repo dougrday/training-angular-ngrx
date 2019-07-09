@@ -18,6 +18,12 @@ export interface NowPlayingSearchOptions extends HttpParams, MovieDbRequest {
     region?: string;
 }
 
+export interface SearchOptions extends HttpParams, MovieDbRequest {
+    language?: string;
+    query: string;
+    page?: string;
+}
+
 export interface SearchResult {
     poster_path?: string | null;
     adult?: boolean;
