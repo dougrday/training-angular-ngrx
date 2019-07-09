@@ -9,8 +9,9 @@ const baseUrl = "https://api.themoviedb.org/3";
 function filterBadMoviesForDemo(response: SearchResults) {
     return {
         ...response,
-        // Filter out drama, romantic & horror movies (to remove risque' covers for demo's sake!)
+        // Filter out gengre-less, drama, romantic & horror movies (to remove risque' covers for demo's sake!)
         results: response.results.filter(result =>
+            result.genre_ids.length > 0 &&
             result.genre_ids.indexOf(10749) === -1 &&
             result.genre_ids.indexOf(27) === -1 &&
             result.genre_ids.indexOf(18) === -1)
